@@ -44,6 +44,6 @@ app.get('/poptup.js', function(request, response) {
   response.sendFile(path.join(__dirname + '/inject.js'));
 });
 
-// app.listen(process.env.PORT);
-app.listen(3000);
+app.listen(process.env.PORT);
+// app.listen(3000);
 console.log('listeting');
