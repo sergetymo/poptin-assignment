@@ -1,5 +1,24 @@
 ;(function(window){
 
+  var defaultPayload = {
+    header: {
+      top: '18%',
+      left: '10%'
+    },
+    input: {
+      top: '38%',
+      left: '14.5%'
+    },
+    submit: {
+      top: '55%',
+      left: '14.5%'
+    },
+    footer: {
+      top: '74%',
+      left: '10%'
+    }
+  }
+
   var on = function(node, event, fn) {
     if (node.addEventListener) {
       node.addEventListener(event, fn, false);
@@ -172,18 +191,15 @@
   var payload = {};
 
   var updatePayload = function(node) {
-    console.log(node);
     if(/px/i.test(node.style.top)) {
       payload[node.id].top = (parseInt(node.style.top) / (496 / 100)) + '%';
     }
     if(/px/i.test(node.style.left)) {
       payload[node.id].left = (parseInt(node.style.left) / (496 / 100)) + '%';
     }
-    console.log(payload[node.id]);
   }
 
   var sendPayload = function() {
-    console.log(payload);
     var request = new XMLHttpRequest();
     request.open("POST", "https://tranquil-reef-41640.herokuapp.com/");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
@@ -191,6 +207,11 @@
     setTimeout(function(){
       window.location.reload();
     }, 100);
+  }
+
+  var sendDefaultPayload = function() {
+    payload = defaultPayload;
+    sendPayload();
   }
 
   var init = function() {
@@ -255,5 +276,6 @@
   fetchConfig();
   on(window.document.getElementById('reset'), 'click', init);
   on(window.document.getElementById('save'), 'click', sendPayload);
+  on(window.document.getElementById('defaults'), 'click', sendDefaultPayload);
 
 })(window);
