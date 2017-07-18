@@ -161,7 +161,7 @@
   var fetchConfig = function() {
     var nScript = n('script', {
       type: 'text/javascript',
-      src: 'https://tranquil-reef-41640.herokuapp.com:3000/config.js',
+      src: 'https://tranquil-reef-41640.herokuapp.com/config.js',
     });
     nScript.onload = function() {
       init();
@@ -185,7 +185,7 @@
   var sendPayload = function() {
     console.log(payload);
     var request = new XMLHttpRequest();
-    request.open("POST", "https://tranquil-reef-41640.herokuapp.com:3000/");
+    request.open("POST", "https://tranquil-reef-41640.herokuapp.com/");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.send(JSON.stringify(payload));
     setTimeout(function(){

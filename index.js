@@ -40,5 +40,5 @@ app.get('/config.js', function(request, response) {
   response.sendFile(path.join(__dirname + '/config.js'));
 });
 
-app.listen(3000);
+app.listen(process.env.PORT);
 console.log('listeting');
