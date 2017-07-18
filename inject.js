@@ -42,6 +42,7 @@
     var nScript = n('script', {
       type: 'text/javascript',
       src: 'https://tranquil-reef-41640.herokuapp.com/config.js',
+      // src: 'http://localhost:3000/config.js',
     });
     nScript.onload = function() {
       init();

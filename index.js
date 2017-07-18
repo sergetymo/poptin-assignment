@@ -22,6 +22,7 @@ app.post('/', function(request, response) {
       .replace(/%submit-left%/g, request.body.submit.left)
       .replace(/%footer-top%/g, request.body.footer.top)
       .replace(/%footer-left%/g, request.body.footer.left)
+      .replace(/%color%/g, request.body.color)
     ;
 
     fs.writeFile('./config.js', result, 'utf8', function (error) {
@@ -43,5 +44,6 @@ app.get('/poptup.js', function(request, response) {
   response.sendFile(path.join(__dirname + '/inject.js'));
 });
 
-app.listen(process.env.PORT);
+// app.listen(process.env.PORT);
+app.listen(3000);
 console.log('listeting');

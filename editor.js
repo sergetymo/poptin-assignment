@@ -16,7 +16,8 @@
     footer: {
       top: '74%',
       left: '10%'
-    }
+    },
+    color: "#df795e"
   }
 
   var on = function(node, event, fn) {
@@ -181,6 +182,7 @@
     var nScript = n('script', {
       type: 'text/javascript',
       src: 'https://tranquil-reef-41640.herokuapp.com/config.js',
+      // src: 'http://localhost:3000/config.js',
     });
     nScript.onload = function() {
       init();
@@ -202,6 +204,7 @@
   var sendPayload = function() {
     var request = new XMLHttpRequest();
     request.open("POST", "https://tranquil-reef-41640.herokuapp.com/");
+    // request.open("POST", "http://localhost:3000/");
     request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     request.send(JSON.stringify(payload));
     setTimeout(function(){
@@ -212,6 +215,14 @@
   var sendDefaultPayload = function() {
     payload = defaultPayload;
     sendPayload();
+  }
+
+  var changeColor = function(event) {
+    var color = event.target.value;
+    if (color.length == 7 && /\#/i.test(color)) {
+      window.document.getElementById('circle').style.backgroundColor = color;
+      payload.color = color;
+    }
   }
 
   var init = function() {
@@ -225,7 +236,7 @@
     }
 
     var nOverlay = n('div', null, config.overlayStyle);
-    var nCircle = n('div', null, config.circleStyle);
+    var nCircle = n('div', {id: 'circle'}, config.circleStyle);
     var nHeader = n('div', null, config.headerStyle, config.headerText);
     var nForm = n('form', config.formAttrs);
     var nInput = n('input', config.inputAttrs, config.inputStyle);
@@ -271,11 +282,15 @@
       top: nFooter.style.top,
       left: nFooter.style.left
     }
+    payload.color = "#df795e";
+
+    window.document.getElementById('color').value = config.circleStyle.backgroundColor;
   }
 
   fetchConfig();
   on(window.document.getElementById('reset'), 'click', init);
   on(window.document.getElementById('save'), 'click', sendPayload);
   on(window.document.getElementById('defaults'), 'click', sendDefaultPayload);
+  on(window.document.getElementById('color'), 'keyup', changeColor);
 
 })(window);
