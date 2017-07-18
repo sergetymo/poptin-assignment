@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poptup editor</title>
+  </head>
+  <style>
+    body {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAGklEQVR4AWNYJYoK92ihwpGiAF0AXcMIUQAAbIfSgRmCFqkAAAAASUVORK5CYII=);
+    }
+    button {
+      position: absolute;
+      width: 64px;
+      z-index: 49999;
+    }
+    #save {
+      top: 32px;
+    }
+    a.handle {
+      display: none;
+    }
+
+    .draggable {
+      cursor: move;
+    }
+    .dragged {
+      outline: 1px solid blue;
+    }
+  </style>
+  <body>
+    <button type="button" id="reset">Reset</button>
+    <button type="button" id="save">Save</button>
+    <script src="./editor.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "name": "poptup-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://freezethrower@gitlab.com/atelier/poptup-backend.git"
+  },
+  "author": "Serge Tymoshenko <serge@atelier.co.ua>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/atelier/poptup-backend/issues"
+  },
+  "homepage": "https://gitlab.com/atelier/poptup-backend#README"
+}
