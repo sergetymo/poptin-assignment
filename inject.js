@@ -41,7 +41,7 @@
   var fetchConfig = function() {
     var nScript = n('script', {
       type: 'text/javascript',
-      src: 'http://fm.atelier.co.ua/config.js',
+      src: 'https://tranquil-reef-41640.herokuapp.com/config.js',
     });
     nScript.onload = function() {
       init();
