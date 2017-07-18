@@ -3,7 +3,7 @@
 Poptup is popup injection script and editor.
 
 ## Inject popup into any webpage
-Insert `<script src="https://tranquil-reef-41640.herokuapp.com/poptup.js"></script>` just before closing `</body` tag.
+Insert `<script src="https://tranquil-reef-41640.herokuapp.com/poptup.js"></script>` just before closing `</body>` tag.
 
 There's test page with already injected script: [Test page](http://fm.atelier.co.ua/test.html).
 
