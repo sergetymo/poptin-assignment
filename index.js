@@ -39,6 +39,9 @@ app.get('/editor.js', function(request, response) {
 app.get('/config.js', function(request, response) {
   response.sendFile(path.join(__dirname + '/config.js'));
 });
+app.get('/poptup.js', function(request, response) {
+  response.sendFile(path.join(__dirname + '/inject.js'));
+});
 
 app.listen(process.env.PORT);
 console.log('listeting');
