@@ -7,7 +7,7 @@ var config = {
 "overlayStyle": {
   "width": "100%",
   "height": "100%",
-  "backgroundColor": "transparent",
+  "backgroundColor": "rgba(0,0,0,.1)",
   "position": "absolute",
   "top": 0,
   "left": 0,
@@ -48,42 +48,52 @@ var config = {
   "method": "post",
   "action": "test.html"
 },
+"inputWrapperStyle": {
+  "position": "absolute",
+  "top": "%input-top%",
+  "left": "%input-left%",
+  "width": "71%",
+  "height": "10%",
+},
 "inputAttrs": {
   "type": "text",
   "placeholder": "מייל:"
 },
 "inputStyle": {
-  "position": "absolute",
+  "width": "100%",
+  "height": "100%",
   "direction": "rtl",
   "fontSize": "22px",
-  "top": "%input-top%",
-  "left": "%input-left%",
-  "width": "71%",
-  "height": "10%",
   "border": 0,
   "backgroundColor": "white",
   "borderRadius": "10px",
   "lineHeight": "36px",
   "padding": "0 16px",
-  "boxSizing": "border-box"
+  "boxSizing": "border-box",
+  "cursor": "move"
 },
 "submitAttrs": {
   "type": "submit",
   "value": "להרשמה"
 },
-"submitStyle": {
+"submitWrapperStyle": {
   "position": "absolute",
   "top": "%submit-top%",
   "left": "%submit-left%",
   "width": "71%",
   "height": "13.1%",
+},
+"submitStyle": {
+  "width": "100%",
+  "height": "100%",
   "border": 0,
   "fontSize": "34px",
   "fontWeight": "bold",
   "borderRadius": "10px",
   "backgroundColor": "#414042",
   "color": "white",
-  "textAlign": "center"
+  "textAlign": "center",
+  "cursor": "move"
 },
 "submitReducedStyle": {
   "fontSize": "24px"
@@ -100,5 +110,20 @@ var config = {
 "footerReducedStyle": {
   "fontSize": "11px"
 },
-"footerText": "(ניתן להסיר את המייל מרשימת התפוצה בכל עת)"
+"footerText": "(ניתן להסיר את המייל מרשימת התפוצה בכל עת)",
+"closerStyle": {
+  "position": "absolute",
+  "width": "24px",
+  "height": "24px",
+  "borderRadius": "50%",
+  "top": "0",
+  "right": "0",
+  "border": "2px solid white",
+  "backgroundColor": "black",
+  "color": "white",
+  "fontSize": "22px",
+  "lineHeight": "23px",
+  "textAlign": "center",
+  "cursor": "pointer"
+  }
 }

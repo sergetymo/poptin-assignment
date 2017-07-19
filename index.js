@@ -43,6 +43,12 @@ app.get('/config.js', function(request, response) {
 app.get('/poptup.js', function(request, response) {
   response.sendFile(path.join(__dirname + '/inject.js'));
 });
+app.get('/jscolor.js', function(request, response) {
+  response.sendFile(path.join(__dirname + '/jscolor.js'));
+});
+app.get('/test.html', function(request, response) {
+  response.sendFile(path.join(__dirname + '/test.html'));
+});
 
 app.listen(process.env.PORT);
 // app.listen(3000);

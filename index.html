@@ -26,9 +26,15 @@
       top: 64px;
     }
     a.handle {
-      display: none;
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background: rgba(0,0,0,.5);
+      border: 2px solid white;
+      width: 12px;
+      height: 12px;
+      border-radius: 12px;
     }
-
     .draggable {
       cursor: move;
     }
@@ -41,6 +47,7 @@
     <button type="button" id="save">Save</button>
     <button type="button" id="defaults">Defaults</button>
     <input type="text" id="color" value="">
+  	<script src="jscolor.js"></script>
     <script src="./editor.js"></script>
   </body>
 </html>

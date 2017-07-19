@@ -1,5 +1,7 @@
 ;(function(window){
 
+  var picker;
+
   var defaultPayload = {
     header: {
       top: '18%',
@@ -218,8 +220,8 @@
   }
 
   var changeColor = function(event) {
-    var color = event.target.value;
-    if (color.length == 7 && /\#/i.test(color)) {
+    var color = '#' + picker;
+    if (/^#[0-9A-F]{6}$/i.test(color)) {
       window.document.getElementById('circle').style.backgroundColor = color;
       payload.color = color;
     }
@@ -231,29 +233,37 @@
       return false;
     }
 
-    if (nOverlay) {
-      nOverlay.parentNode.removeChild(nOverlay);
+    if (window.document.getElementById('overlay')) {
+      var nOldOverlay = window.document.getElementById('overlay');
+      nOldOverlay.parentNode.removeChild(nOldOverlay);
     }
 
-    var nOverlay = n('div', null, config.overlayStyle);
+    var nOverlay = n('div', {id: 'overlay'}, config.overlayStyle);
     var nCircle = n('div', {id: 'circle'}, config.circleStyle);
     var nHeader = n('div', null, config.headerStyle, config.headerText);
     var nForm = n('form', config.formAttrs);
+    var nInputWrapper = n('div', null, config.inputWrapperStyle);
     var nInput = n('input', config.inputAttrs, config.inputStyle);
+    var nSubmitWrapper = n('div', null, config.submitWrapperStyle);
     var nSubmit = n('input', config.submitAttrs, config.submitStyle);
     var nFooter = n('div', null, config.footerStyle, config.footerText);
 
     nHeader.id = 'header';
-    nInput.id = 'input';
-    nSubmit.id = 'submit';
+    nInputWrapper.id = 'input';
+    nSubmitWrapper.id = 'submit';
     nFooter.id = 'footer';
 
     nSubmit.onclick = function() {
       return false;
     };
+    nForm.onsubmit = function() {
+      return false;
+    }
 
-    nForm.appendChild(nInput);
-    nForm.appendChild(nSubmit);
+    nInputWrapper.appendChild(nInput);
+    nSubmitWrapper.appendChild(nSubmit);
+    nForm.appendChild(nInputWrapper);
+    nForm.appendChild(nSubmitWrapper);
     nCircle.appendChild(nHeader);
     nCircle.appendChild(nForm);
     nCircle.appendChild(nFooter);
@@ -262,8 +272,8 @@
     nBody.appendChild(nOverlay);
 
     Draggable.init(nHeader);
-    Draggable.init(nInput);
-    Draggable.init(nSubmit);
+    Draggable.init(nInputWrapper);
+    Draggable.init(nSubmitWrapper);
     Draggable.init(nFooter);
 
     payload.header = {
@@ -271,26 +281,37 @@
       left: nHeader.style.left
     }
     payload.input = {
-      top: nInput.style.top,
-      left: nInput.style.left
+      top: nInputWrapper.style.top,
+      left: nInputWrapper.style.left
     }
     payload.submit = {
-      top: nSubmit.style.top,
-      left: nSubmit.style.left
+      top: nSubmitWrapper.style.top,
+      left: nSubmitWrapper.style.left
     }
     payload.footer = {
       top: nFooter.style.top,
       left: nFooter.style.left
     }
-    payload.color = "#df795e";
+    payload.color = nCircle.style.backgroundColor;
 
-    window.document.getElementById('color').value = config.circleStyle.backgroundColor;
+    var nColor = window.document.getElementById('color');
+    nColor.value = config.circleStyle.backgroundColor;
+
+    if(!nColor._jscLinkedInstance) {
+      picker = new jscolor(nColor, {
+        hash: true,
+        uppercase: false
+      });
+      on(nColor, 'change', changeColor);
+    } else {
+      nColor._jscLinkedInstance.fromString(nColor.value);
+    }
   }
 
   fetchConfig();
   on(window.document.getElementById('reset'), 'click', init);
   on(window.document.getElementById('save'), 'click', sendPayload);
   on(window.document.getElementById('defaults'), 'click', sendDefaultPayload);
-  on(window.document.getElementById('color'), 'keyup', changeColor);
+  // on(window.document.getElementById('color'), 'change', changeColor);
 
 })(window);

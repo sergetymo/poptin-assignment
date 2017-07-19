@@ -65,9 +65,17 @@
     var nCircle = n('div', null, config.circleStyle);
     var nHeader = n('div', null, config.headerStyle, config.headerText);
     var nForm = n('form', config.formAttrs);
+    var nInputWrapper = n('div', null, config.inputWrapperStyle);
     var nInput = n('input', config.inputAttrs, config.inputStyle);
+    var nSubmitWrapper = n('div', null, config.submitWrapperStyle);
     var nSubmit = n('input', config.submitAttrs, config.submitStyle);
     var nFooter = n('div', null, config.footerStyle, config.footerText);
+    var nCloser = n('div', null, config.closerStyle, '<span>&times;</span>');
+
+    nCloser.addEventListener('click', function() {
+      nBody.style.position = 'initial';
+      nOverlay.parentNode.removeChild(nOverlay);
+    });
 
     var reduceElements = function() {
       setStyle(nHeader, config.headerReducedStyle);
@@ -91,13 +99,19 @@
       }
     });
 
-    nForm.appendChild(nInput);
-    nForm.appendChild(nSubmit);
+    nInputWrapper.appendChild(nInput);
+    nSubmitWrapper.appendChild(nSubmit);
+    nForm.appendChild(nInputWrapper);
+    nForm.appendChild(nSubmitWrapper);
     nCircle.appendChild(nHeader);
     nCircle.appendChild(nForm);
     nCircle.appendChild(nFooter);
-    nOverlay.appendChild(nCircle)
+    nCircle.appendChild(nCloser);
+    nOverlay.appendChild(nCircle);
     nBody.appendChild(nOverlay);
+
+    nBody.style.position = 'fixed';
+
   }
 
   fetchConfig();
