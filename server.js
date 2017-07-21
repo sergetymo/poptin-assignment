@@ -61,6 +61,6 @@ app.get('/test.html', function(request, response) {
   console.log('Served /test.html');
 });
 
-// app.listen(process.env.PORT);
-app.listen(3000);
+app.listen(process.env.PORT);
+// app.listen(3000);
 console.log('Listening...')
