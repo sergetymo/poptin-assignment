@@ -4,8 +4,8 @@
   "description": "Popup editor and injection script",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "express": "^4.15.3"
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
   },
   "devDependencies": {},
   "scripts": {
